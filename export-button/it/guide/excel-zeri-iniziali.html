@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excel toglie gli zeri iniziali (CAP, codici, telefoni): perché succede e come tenerli — Bottone Esporta</title>
+<meta name="description" content="Excel trasforma il CAP 00118 in 118 e una partita IVA in 1,23E+10. Perché toglie gli zeri iniziali, come tenerli quando incolli o importi i dati e l’opzione di Excel che lo disattiva.">
+<link rel="canonical" href="https://talvok.github.io/export-button/it/guide/excel-zeri-iniziali.html">
+<link rel="alternate" hreflang="en" href="https://talvok.github.io/export-button/guides/excel-leading-zeros.html">
+<link rel="alternate" hreflang="pt-BR" href="https://talvok.github.io/export-button/pt/guias/excel-zero-a-esquerda.html">
+<link rel="alternate" hreflang="es" href="https://talvok.github.io/export-button/es/guias/excel-ceros-a-la-izquierda.html">
+<link rel="alternate" hreflang="it" href="https://talvok.github.io/export-button/it/guide/excel-zeri-iniziali.html">
+<link rel="icon" href="../../icona.png">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="testata">
+  <div class="contenitore">
+    <a class="marca" href="../"><img src="../../icona.png" alt=""><span>Bottone Esporta</span></a>
+    <nav class="lingue" aria-label="Lingua">
+      <a href="../../guides/excel-leading-zeros.html" hreflang="en">EN</a>
+      <a href="../../pt/guias/excel-zero-a-esquerda.html" hreflang="pt-BR">PT</a>
+      <a href="../../es/guias/excel-ceros-a-la-izquierda.html" hreflang="es">ES</a>
+      <a href="excel-zeri-iniziali.html" hreflang="it" aria-current="page">IT</a>
+    </nav>
+    <a class="btn-testata" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=it&amp;utm_campaign=excel-zeri-iniziali">Aggiungi a Chrome</a>
+  </div>
+</header>
+
+<main class="articolo">
+  <p class="briciole"><a href="../">Bottone Esporta</a> › <a href="../#guide">Guide</a></p>
+  <h1>Perché Excel toglie gli zeri iniziali, e come tenerli</h1>
+  <p class="sotto">Incolli un elenco di clienti e il CAP 00118 diventa 118. Il telefono 061234567 perde lo zero, una partita IVA si trasforma in 1,23E+10, un numero d’ordine o di carta di 16 cifre finisce con uno 0 che non c’era. La causa è sempre la stessa, e si può evitare.</p>
+
+  <h2>Perché succede</h2>
+  <p>Quando in una cella arriva qualcosa fatto solo di cifre, Excel decide che è un numero. Un numero non ha zeri davanti, quindi 00118 viene salvato come 118. Altre due regole peggiorano le cose:</p>
+  <ul>
+    <li>Nel formato Generale, i numeri lunghi vengono <strong>mostrati in notazione scientifica</strong>: 12345678901 diventa 1,23E+10 quando non sta nella colonna, e da 12 cifre in su succede sempre.</li>
+    <li>Excel tiene solo <strong>15 cifre significative</strong>. Dalla sedicesima cifra in poi diventa tutto zero, e non è solo l’aspetto: il valore è perso.</li>
+  </ul>
+  <table class="esempio">
+    <tr><th>Cosa mostra la pagina</th><th>Cosa tiene Excel</th></tr>
+    <tr><td>CAP 00118</td><td class="sbagliato">118</td></tr>
+    <tr><td>Fattura 000127</td><td class="sbagliato">127</td></tr>
+    <tr><td>Telefono 061234567</td><td class="sbagliato">61234567</td></tr>
+    <tr><td>Partita IVA 12345678901</td><td class="sbagliato">1,23E+10</td></tr>
+    <tr><td>Ordine 4012888888881881</td><td class="sbagliato">4012888888881880</td></tr>
+  </table>
+  <p>Un codice non è un numero: nessuno somma i CAP. Deve restare testo, esattamente come è scritto.</p>
+
+  <h2>Come tenere gli zeri</h2>
+
+  <h3>Prima di incollare: metti la colonna in formato Testo</h3>
+  <ol>
+    <li>Seleziona le colonne che conterranno i codici.</li>
+    <li>Tasto destro › <span class="menu">Formato celle › Numero › Testo</span> › OK.</li>
+    <li>Incolla e scegli <span class="menu">Applica formattazione di destinazione</span> dal pulsante <span class="menu">Opzioni Incolla</span>, così il formato Testo resta.</li>
+  </ol>
+  <p>Funziona, ma devi ricordartelo prima di ogni incolla, e scegliere le colonne giuste: se per sbaglio metti in Testo anche gli importi, smettono di sommarsi.</p>
+
+  <h3>Quando importi: imposta il tipo della colonna</h3>
+  <p>Se i dati arrivano da un file CSV o da <span class="menu">Dati › Dal Web</span>, apri <span class="menu">Trasforma dati</span> e imposta le colonne dei codici su <strong>Testo</strong> prima di caricarle. Nell’Importazione guidata testo la stessa scelta è nell’ultimo passaggio, sotto <span class="menu">Formato dati per colonna › Testo</span>.</p>
+
+  <h3>Spegni la conversione (Microsoft 365)</h3>
+  <p>Le versioni recenti di Excel (Microsoft 365 ed Excel 2024) permettono di disattivare questo comportamento: <span class="menu">File › Opzioni › Dati › Conversione automatica dei dati</span>, togli la spunta a <em>Rimuovi gli zeri iniziali e converti in numero</em> e all’opzione che tiene solo le prime 15 cifre dei numeri lunghi. Su Mac: <span class="menu">Excel › Preferenze › Modifica</span>. Vale per tutto quello che scrivi e incolli, così i codici restano come sono; i numeri che sono davvero numeri vengono riconosciuti lo stesso.</p>
+
+  <h3>Li hai già persi? Ricostruiscili con TESTO</h3>
+  <p>Se la colonna ha sempre la stessa lunghezza (un CAP ha 5 cifre), puoi rimettere gli zeri con una formula: <code>=TESTO(A2;"00000")</code>, con tanti zeri quante sono le cifre. Oppure usa il formato personalizzato <code>00000</code> (<span class="menu">Formato celle › Numero › Personalizzato</span>), che mostra gli zeri mentre il valore resta un numero. Non serve per le cifre perse dopo la quindicesima: quelle non tornano.</p>
+
+  <div class="riquadro attenzione">
+    <p><strong>Non sistemarlo a mano con l’apostrofo.</strong> Scrivere <code>'00118</code> funziona per una cella, non per 3.000 righe. E non aiuta con un elenco che esporti di nuovo ogni settimana.</p>
+  </div>
+
+  <h2>Oppure lascia fare all’esportazione</h2>
+  <p><a href="../">Bottone Esporta</a> riconosce i codici prima di scrivere il file: i valori con gli zeri iniziali e le lunghe sequenze di cifre (numeri di telefono, partite IVA, numeri d’ordine) vengono scritti come testo, esattamente come sulla pagina. Nelle colonne che si chiamano CAP, Codice, Fattura, Partita IVA e simili, i numeri vengono scritti senza il punto delle migliaia, così 10045 non diventa 10.045. Gli importi e le quantità accanto restano numeri veri, da sommare. Niente da impostare, colonna per colonna.</p>
+
+  <section class="cta-guida">
+    <h2>Esporta senza perdere uno zero</h2>
+    <p>Gratis per una tabella alla volta, senza account, e niente esce dal tuo browser.</p>
+    <div class="azioni">
+      <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=it&amp;utm_campaign=excel-zeri-iniziali">Aggiungi a Chrome — è gratis</a>
+      <a class="btn btn-secondario" href="../../prova.html?hl=it">Provalo su una tabella di esempio</a>
+    </div>
+  </section>
+
+  <nav class="correlate" aria-label="Guide correlate">
+    <h2>Guide correlate</h2>
+    <a href="esportare-tabella-da-sito-in-excel.html">Come esportare una tabella da un sito web in Excel</a>
+    <a href="numeri-come-testo-in-excel.html">Numeri copiati da un sito che in Excel diventano testo</a>
+  </nav>
+</main>
+
+<footer class="piede">
+  <div class="contenitore">
+    <span>Bottone Esporta</span>
+    <a href="../../privacy-policy.html">Informativa sulla privacy</a>
+    <a href="https://talvok.github.io/">Talvok</a>
+  </div>
+</footer>
+</body>
+</html>

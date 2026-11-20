@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sample table — Export Button</title>
+  <meta name="description" content="A sample table to try the Export Button extension: export it to Excel and check that amounts, dates and leading zeros stay right.">
+  <link rel="icon" href="icona.png">
+  <style>
+    :root { --carta:#F7F2EA; --scheda:#FFFFFF; --velo:#F1EBE2; --filetto:#EAE3D8; --inchiostro:#1E1B18; --grigio:#6B645C;
+            --verde:#136F63; --verde-tinta:#E2F0EC; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { min-height: 100vh; background: var(--carta); color: var(--inchiostro);
+           font-family: system-ui, "Segoe UI", -apple-system, sans-serif; font-size: 16px; line-height: 1.55; }
+    .pagina { max-width: 900px; margin: 0 auto; padding: 48px 24px 64px; }
+    .marca { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; color: var(--grigio);
+             margin-bottom: 36px; text-decoration: none; }
+    .marca img { width: 32px; height: 32px; border-radius: 8px; }
+    h1 { font-size: clamp(28px, 4.4vw, 40px); line-height: 1.15; letter-spacing: -0.02em; }
+    .sotto { margin-top: 12px; font-size: 18px; color: var(--grigio); max-width: 38em; }
+    .aiuto { margin-top: 20px; display: inline-flex; gap: 10px; align-items: center; padding: 12px 16px;
+             background: var(--verde-tinta); color: var(--verde); border-radius: 12px; font-size: 15px; font-weight: 600; }
+    .scheda { margin-top: 32px; background: var(--scheda); border: 1px solid var(--filetto); border-radius: 20px;
+              box-shadow: 0 1px 2px rgba(30,27,24,.05), 0 18px 40px -22px rgba(30,27,24,.22); overflow: hidden; }
+    .scheda h2 { font-size: 18px; padding: 20px 24px 0; }
+    .scorri { overflow-x: auto; padding: 12px 8px 16px; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; white-space: nowrap; }
+    th, td { padding: 10px 16px; text-align: left; border-bottom: 1px solid var(--filetto); }
+    th { font-size: 14px; color: var(--grigio); }
+    td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
+    tbody tr:last-child td { border-bottom: 0; }
+    .nota { margin-top: 18px; font-size: 14px; color: var(--grigio); }
+  </style>
+</head>
+<body>
+  <main class="pagina">
+    <a class="marca" href="./"><img src="icona.png" alt=""><span id="marca">Export Button</span></a>
+    <h1 id="titolo">A sample table to try it</h1>
+    <p class="sotto" id="sotto">Click the Export Button icon at the top right and choose Excel. Then open the file: amounts are numbers, dates are dates, and codes keep their leading zero.</p>
+    <p class="aiuto" id="aiuto">Can't see the icon? Click the puzzle piece at the top right and pin it.</p>
+
+    <section class="scheda">
+      <h2 id="nome-tabella">Invoices — October</h2>
+      <div class="scorri"><table id="fatture"><thead></thead><tbody></tbody></table></div>
+    </section>
+    <p class="nota" id="nota">Sample data, made up for this page.</p>
+  </main>
+  <script>
+    // Una tabella per lingua, con i formati veri di quel paese: chi la esporta vede subito che importi,
+    // date e codici con lo zero davanti arrivano giusti in Excel.
+    const DATI = {
+      en: {
+        marca: 'Export Button', titolo: 'A sample table to try it',
+        sotto: 'Click the Export Button icon at the top right and choose Excel. Then open the file: amounts are numbers, dates are dates, and codes keep their leading zero.',
+        aiuto: "Can't see the icon? Click the puzzle piece at the top right and pin it.",
+        tabella: 'Invoices — October', nota: 'Sample data, made up for this page.',
+        colonne: ['Invoice', 'Customer', 'Date', 'Amount', 'ZIP code', 'Phone'],
+        righe: [
+          ['00127', 'Northwind Traders', '10/14/2026', '$12,450.00', '02134', '(617) 555-0142'],
+          ['00128', 'Blue Harbor Cafe', '10/15/2026', '$980.50', '07030', '(201) 555-0187'],
+          ['00129', 'Maple & Oak Supply', '10/16/2026', '$3,205.75', '05401', '(802) 555-0119'],
+          ['00130', 'Summit Dental Group', '10/20/2026', '$1,140.00', '03101', '(603) 555-0164'],
+          ['00131', 'Riverside Print Shop', '10/22/2026', '$27,300.00', '06103', '(860) 555-0103'],
+          ['00132', 'Lakeview Bakery', '10/27/2026', '$615.20', '01002', '(413) 555-0158'],
+        ],
+      },
+      pt: {
+        marca: 'Botão Exportar', titolo: 'Uma tabela para experimentar',
+        sotto: 'Clique no ícone do Botão Exportar no canto superior direito e escolha Excel. Depois abra o arquivo: os valores são números, as datas são datas e os códigos mantêm o zero à esquerda.',
+        aiuto: 'Não vê o ícone? Clique na peça de quebra-cabeça no canto superior direito e fixe.',
+        tabella: 'Notas fiscais — outubro', nota: 'Dados de exemplo, inventados para esta página.',
+        colonne: ['Nota', 'Cliente', 'Data', 'Valor', 'CEP', 'Telefone'],
+        righe: [
+          ['000127', 'Padaria Bom Pão Ltda', '14/10/2026', 'R$ 12.450,00', '01310-100', '(11) 3456-7890'],
+          ['000128', 'Café Estação', '15/10/2026', 'R$ 980,50', '04538-132', '(11) 2345-6789'],
+          ['000129', 'Ferragens Silva', '16/10/2026', 'R$ 3.205,75', '20040-002', '(21) 3344-5566'],
+          ['000130', 'Clínica Sorriso', '20/10/2026', 'R$ 1.140,00', '30130-010', '(31) 3222-1100'],
+          ['000131', 'Gráfica Ribeira', '22/10/2026', 'R$ 27.300,00', '40010-000', '(71) 3333-2211'],
+          ['000132', 'Doceria Lago Azul', '27/10/2026', 'R$ 615,20', '80010-010', '(41) 3030-4040'],
+        ],
+      },
+      es: {
+        marca: 'Botón Exportar', titolo: 'Una tabla para probarlo',
+        sotto: 'Haz clic en el icono de Botón Exportar arriba a la derecha y elige Excel. Luego abre el archivo: los importes son números, las fechas son fechas y los códigos conservan el cero inicial.',
+        aiuto: '¿No ves el icono? Haz clic en la pieza de puzle arriba a la derecha y fíjalo.',
+        tabella: 'Facturas — octubre', nota: 'Datos de ejemplo, inventados para esta página.',
+        colonne: ['Factura', 'Cliente', 'Fecha', 'Importe', 'C. P.', 'Teléfono'],
+        righe: [
+          ['00127', 'Panadería Sol', '14/10/2026', '12.450,00 €', '08001', '934 56 78 90'],
+          ['00128', 'Café La Estación', '15/10/2026', '980,50 €', '28013', '915 23 45 67'],
+          ['00129', 'Ferretería Ruiz', '16/10/2026', '3.205,75 €', '46001', '963 11 22 33'],
+          ['00130', 'Clínica Dental Mar', '20/10/2026', '1.140,00 €', '41001', '954 33 44 55'],
+          ['00131', 'Imprenta Ribera', '22/10/2026', '27.300,00 €', '03001', '965 44 55 66'],
+          ['00132', 'Pastelería Lago', '27/10/2026', '615,20 €', '01001', '945 66 77 88'],
+        ],
+      },
+      it: {
+        marca: 'Bottone Esporta', titolo: 'Una tabella per provarlo',
+        sotto: "Clicca l'icona di Bottone Esporta in alto a destra e scegli Excel. Poi apri il file: gli importi sono numeri, le date sono date e i codici tengono lo zero davanti.",
+        aiuto: "Non vedi l'icona? Clicca il pezzo di puzzle in alto a destra e fissala con la puntina.",
+        tabella: 'Fatture — ottobre', nota: 'Dati di esempio, inventati per questa pagina.',
+        colonne: ['Fattura', 'Cliente', 'Data', 'Importo', 'CAP', 'Telefono'],
+        righe: [
+          ['00127', 'Forno Bianchi Srl', '14/10/2026', '€ 12.450,00', '00118', '06 1234567'],
+          ['00128', 'Caffè Stazione', '15/10/2026', '€ 980,50', '20121', '02 2345678'],
+          ['00129', 'Ferramenta Rossi', '16/10/2026', '€ 3.205,75', '10121', '011 3456789'],
+          ['00130', 'Studio Dentistico Sorriso', '20/10/2026', '€ 1.140,00', '40121', '051 4567890'],
+          ['00131', 'Tipografia Riva', '22/10/2026', '€ 27.300,00', '09124', '070 5678901'],
+          ['00132', 'Pasticceria Lago', '27/10/2026', '€ 615,20', '37121', '045 6789012'],
+        ],
+      },
+    };
+    const hl = (new URLSearchParams(location.search).get('hl') || navigator.language || 'en').toLowerCase();
+    const codice = hl.split('-')[0];
+    const d = DATI[codice] || DATI.en;
+    document.documentElement.lang = DATI[codice] ? hl : 'en';
+    for (const id of ['marca', 'titolo', 'sotto', 'aiuto', 'nota']) document.getElementById(id).textContent = d[id];
+    document.getElementById('nome-tabella').textContent = d.tabella;
+    document.title = `${d.titolo} — ${d.marca}`;
+    const tabella = document.getElementById('fatture');
+    const NUM = 3; // la colonna degli importi va a destra
+    const tr = tabella.tHead.insertRow();
+    d.colonne.forEach((c, i) => { const th = document.createElement('th'); th.textContent = c; if (i === NUM) th.className = 'num'; tr.appendChild(th); });
+    for (const riga of d.righe) {
+      const r = tabella.tBodies[0].insertRow();
+      riga.forEach((v, i) => { const td = r.insertCell(); td.textContent = v; if (i === NUM) td.className = 'num'; });
+    }
+  </script>
+</body>
+</html>

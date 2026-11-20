@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to export a table from a website to Excel (3 ways) — Export Button</title>
+<meta name="description" content="Three ways to get a web table into Excel: copy and paste, Excel's From Web, or a browser extension. What each one handles, where it breaks, and which to use for company portals and old web apps.">
+<link rel="canonical" href="https://talvok.github.io/export-button/guides/export-website-table-to-excel.html">
+<link rel="alternate" hreflang="en" href="https://talvok.github.io/export-button/guides/export-website-table-to-excel.html">
+<link rel="alternate" hreflang="pt-BR" href="https://talvok.github.io/export-button/pt/guias/exportar-tabela-de-site-para-excel.html">
+<link rel="alternate" hreflang="es" href="https://talvok.github.io/export-button/es/guias/exportar-tabla-web-a-excel.html">
+<link rel="alternate" hreflang="it" href="https://talvok.github.io/export-button/it/guide/esportare-tabella-da-sito-in-excel.html">
+<link rel="icon" href="../icona.png">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="testata">
+  <div class="contenitore">
+    <a class="marca" href="../"><img src="../icona.png" alt=""><span>Export Button</span></a>
+    <nav class="lingue" aria-label="Language">
+      <a href="export-website-table-to-excel.html" hreflang="en" aria-current="page">EN</a>
+      <a href="../pt/guias/exportar-tabela-de-site-para-excel.html" hreflang="pt-BR">PT</a>
+      <a href="../es/guias/exportar-tabla-web-a-excel.html" hreflang="es">ES</a>
+      <a href="../it/guide/esportare-tabella-da-sito-in-excel.html" hreflang="it">IT</a>
+    </nav>
+    <a class="btn-testata" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=en&amp;utm_campaign=export-website-table-to-excel">Add to Chrome</a>
+  </div>
+</header>
+
+<main class="articolo">
+  <p class="briciole"><a href="../">Export Button</a> › <a href="../#guides">Guides</a></p>
+  <h1>How to export a table from a website to Excel</h1>
+  <p class="sotto">There are three ways to do it. They all work on a simple public page. They don't all work on a company portal, a table inside a frame, or a list that goes on for 40 pages. Here's what each one handles.</p>
+
+  <h2>1. Copy and paste</h2>
+  <p>Select the table with the mouse, press <kbd>Ctrl</kbd>+<kbd>C</kbd>, click a cell in Excel and press <kbd>Ctrl</kbd>+<kbd>V</kbd>. If the result keeps the website's colors and fonts, use <span class="menu">Home › Paste › Match Destination Formatting</span> instead.</p>
+  <p>It's the fastest way, and on a clean, small table it's enough. The problems start when you try to use the data:</p>
+  <ul>
+    <li><strong>Numbers arrive as text.</strong> “$1,250.00” or “1.250,00 €” often land in Excel as text: they sit on the left, and <code>SUM</code> returns 0. See <a href="numbers-stored-as-text.html">numbers pasted from a website become text</a>.</li>
+    <li><strong>Codes lose their zeros.</strong> A ZIP code like 02134 becomes 2134, and a long ID becomes 3.33E+10. See <a href="excel-leading-zeros.html">why Excel removes leading zeros</a>.</li>
+    <li><strong>Dates are read the wrong way round</strong> when the site and your Excel use a different order (10/12 is October 12 in the US and 10 December almost everywhere else).</li>
+    <li><strong>Junk comes along:</strong> empty rows, the header repeated every 20 rows, buttons and icons from the page.</li>
+    <li><strong>Only one page at a time.</strong> If the table is split across pages with a “Next” button, you repeat everything for each page.</li>
+  </ul>
+
+  <h2>2. Excel's “From Web”</h2>
+  <p>Excel can read a web page by itself. In Excel for Windows: <span class="menu">Data › Get Data › From Other Sources › From Web</span> (in some versions it's directly <span class="menu">Data › From Web</span>). Paste the page address, and Excel shows a list of the tables it found. Pick one and click <span class="menu">Load</span>, or <span class="menu">Transform Data</span> to fix column types before loading.</p>
+  <p>It's a good option for public pages you need to refresh often, because the query can be updated with one click. But Excel opens the page on its own, outside your browser, and that has limits:</p>
+  <ul>
+    <li><strong>Pages behind a login don't work.</strong> Excel doesn't have your session, so a company portal, an online banking page or an admin panel usually shows a login page or nothing at all.</li>
+    <li><strong>Tables built by the page after loading can be missing</strong>, depending on how the site builds them.</li>
+    <li><strong>Internal addresses</strong> (intranet, old ERP screens) are often not reachable the same way.</li>
+  </ul>
+
+  <h2>3. A browser extension</h2>
+  <p>An extension works <em>inside</em> your browser, on the page you're already looking at. That's the difference: if you can see the table, it can read it, even behind a login, inside a frame, or on an internal portal.</p>
+  <p>With <a href="../">Export Button</a> it goes like this:</p>
+  <ol>
+    <li>Open the page with the table.</li>
+    <li>Click the extension icon. It lists the tables on the page; hover one and it lights up, so you know which is which.</li>
+    <li>Click <strong>Excel</strong> (or CSV). The file is built in your browser and downloaded.</li>
+  </ol>
+  <p>Before writing the file it cleans the data: amounts become real numbers (whatever the format: $1,234.56, 1.234,56 €, R$ 1.234,56), dates become dates, codes with leading zeros stay as written, empty rows and repeated headers are dropped. Tables split in two on the page (a frozen first column, or headers kept in a separate table) are put back together.</p>
+
+  <div class="riquadro consiglio">
+    <p><strong>Table split across many pages?</strong> In the Pro version, the extension clicks “Next” for you, page after page, and gives you a single file. It stops on its own at the last page.</p>
+  </div>
+
+  <h2>Which one to use</h2>
+  <table class="esempio">
+    <tr><th>Situation</th><th>Best way</th></tr>
+    <tr><td>Small public table, used once</td><td>Copy and paste</td></tr>
+    <tr><td>Public table you refresh every week</td><td>Excel's From Web</td></tr>
+    <tr><td>Company portal, ERP, admin panel (needs login)</td><td>Browser extension</td></tr>
+    <tr><td>Table inside a frame, or split in two</td><td>Browser extension</td></tr>
+    <tr><td>Amounts, dates and codes that must be right</td><td>Browser extension, or From Web with column types set by hand</td></tr>
+  </table>
+
+  <section class="cta-guida">
+    <h2>Try it on your table</h2>
+    <p>Export Button is free for one table at a time, with no account. Everything happens in your browser: nothing is uploaded.</p>
+    <div class="azioni">
+      <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=en&amp;utm_campaign=export-website-table-to-excel">Add to Chrome — it's free</a>
+      <a class="btn btn-secondario" href="https://microsoftedge.microsoft.com/addons/detail/ongeneafdldogmoknfiojaknbaehgfmg">Get it for Edge</a>
+    </div>
+  </section>
+
+  <nav class="correlate" aria-label="Related guides">
+    <h2>Related guides</h2>
+    <a href="excel-leading-zeros.html">Why Excel removes leading zeros, and how to keep them</a>
+    <a href="numbers-stored-as-text.html">Numbers pasted from a website become text in Excel</a>
+  </nav>
+</main>
+
+<footer class="piede">
+  <div class="contenitore">
+    <span>Export Button</span>
+    <a href="../privacy-policy.html">Privacy policy</a>
+    <a href="https://talvok.github.io/">Talvok</a>
+  </div>
+</footer>
+</body>
+</html>

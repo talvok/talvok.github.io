@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Export Button — any web table to clean Excel, in one click</title>
+<meta name="description" content="Free browser extension: export any table on a web page to Excel or CSV in one click. Real numbers, real dates, leading zeros kept. Works inside iframes and old business web apps. Nothing leaves your browser.">
+<link rel="canonical" href="https://talvok.github.io/export-button/">
+<link rel="alternate" hreflang="en" href="https://talvok.github.io/export-button/">
+<link rel="alternate" hreflang="pt-BR" href="https://talvok.github.io/export-button/pt/">
+<link rel="alternate" hreflang="es" href="https://talvok.github.io/export-button/es/">
+<link rel="alternate" hreflang="it" href="https://talvok.github.io/export-button/it/">
+<link rel="alternate" hreflang="x-default" href="https://talvok.github.io/export-button/">
+<meta property="og:title" content="Export Button — any web table to clean Excel">
+<meta property="og:description" content="One click and the table becomes a spreadsheet you can use: numbers you can sum, dates you can sort, leading zeros kept.">
+<meta property="og:image" content="https://talvok.github.io/export-button/assets/img/popup-en.png">
+<link rel="icon" href="icona.png">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body>
+
+<div class="avviso-lingua" id="avviso-lingua" hidden></div>
+
+<header class="testata">
+  <div class="contenitore">
+    <a class="marca" href="./"><img src="icona.png" alt=""><span>Export Button</span></a>
+    <nav class="lingue" aria-label="Language">
+      <a href="./" hreflang="en" aria-current="page">EN</a>
+      <a href="pt/" hreflang="pt-BR">PT</a>
+      <a href="es/" hreflang="es">ES</a>
+      <a href="it/" hreflang="it">IT</a>
+    </nav>
+    <a class="btn-testata" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=landing&amp;utm_medium=en&amp;utm_campaign=index">Add to Chrome</a>
+  </div>
+</header>
+
+<main>
+  <section class="apertura">
+    <div class="contenitore">
+      <div>
+        <span class="etichetta">Free extension for Chrome and Edge</span>
+        <h1>Any table on a web page, in clean Excel.</h1>
+        <p class="sotto">One click and the table becomes a spreadsheet you can work with: numbers you can sum, dates you can sort, leading zeros kept. Built for the old business web apps that have no Export button.</p>
+        <div class="azioni">
+          <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=landing&amp;utm_medium=en&amp;utm_campaign=index">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7.5 10.5 4.5 4.5 4.5-4.5"/><path d="M4 17v1.5A2.5 2.5 0 0 0 6.5 21h11a2.5 2.5 0 0 0 2.5-2.5V17"/></svg>
+            Add to Chrome — it's free</a>
+          <a class="btn btn-secondario" href="https://microsoftedge.microsoft.com/addons/detail/ongeneafdldogmoknfiojaknbaehgfmg">Get it for Edge</a>
+        </div>
+        <p class="rassicura"><span>No account</span><span>Nothing leaves your browser</span><span>10 languages</span></p>
+      </div>
+
+      <div class="scena" aria-label="An old invoice page with the Export Button popup open">
+        <div class="finestra">
+          <div class="finestra-barra"><i></i><i></i><i></i><span class="indirizzo">erp.company.local/invoices?month=10</span></div>
+          <div class="finestra-corpo">
+            <p class="titolo-gestionale">Invoices — October</p>
+            <table class="vecchia">
+              <tr><th>Invoice</th><th>Customer</th><th>Date</th><th>Amount</th><th class="nascondi-tel">ZIP</th></tr>
+              <tr><td>00127</td><td>Northwind Traders</td><td>10/14/2026</td><td>$12,450.00</td><td class="nascondi-tel">02134</td></tr>
+              <tr><td>00128</td><td>Blue Harbor Cafe</td><td>10/15/2026</td><td>$980.50</td><td class="nascondi-tel">07030</td></tr>
+              <tr><td>00129</td><td>Maple &amp; Oak Supply</td><td>10/16/2026</td><td>$3,205.75</td><td class="nascondi-tel">05401</td></tr>
+              <tr><td>00130</td><td>Summit Dental Group</td><td>10/20/2026</td><td>$1,140.00</td><td class="nascondi-tel">03101</td></tr>
+              <tr><td>00131</td><td>Riverside Print Shop</td><td>10/22/2026</td><td>$27,300.00</td><td class="nascondi-tel">06103</td></tr>
+              <tr><td>00132</td><td>Lakeview Bakery</td><td>10/27/2026</td><td>$615.20</td><td class="nascondi-tel">01002</td></tr>
+            </table>
+          </div>
+        </div>
+        <img class="popup" src="assets/img/popup-en.png" width="380" height="424" alt="The Export Button popup: 1 table found, a preview of the first rows, and the Excel, CSV and PDF buttons">
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione">
+    <div class="contenitore">
+      <h2>Copy and paste breaks your data. This doesn't.</h2>
+      <p class="intro">A table pasted into Excel looks fine until you try to use it. These are the things Export Button fixes on its own, before the file reaches you.</p>
+      <div class="griglia">
+        <div class="carta">
+          <h3>Numbers stay numbers</h3>
+          <p>Amounts with currency symbols and thousands separators become real numbers, in any format: $1,234.56, 1.234,56 €, R$ 1.234,56. The separator is worked out from the whole column.</p>
+          <div class="confronto"><span class="prima">$162,700<small>pasted as text</small></span><span class="freccia">→</span><span class="dopo">162,700.00<small>a number you can sum</small></span></div>
+        </div>
+        <div class="carta">
+          <h3>Dates become dates</h3>
+          <p>10/14/2026, 14/10/2026, Oct 14, 2026: day and month order is read from the column, so dates sort and filter the way they should.</p>
+          <div class="confronto"><span class="prima">Oct 14, 2026<small>text that won't sort</small></span><span class="freccia">→</span><span class="dopo">10/14/2026<small>a real Excel date</small></span></div>
+        </div>
+        <div class="carta">
+          <h3>Codes keep their zeros</h3>
+          <p>ZIP codes, invoice numbers, tax IDs and phone numbers stay exactly as written. No more 02134 turning into 2134.</p>
+          <div class="confronto"><span class="prima">2134<small>what Excel does</small></span><span class="freccia">→</span><span class="dopo">02134<small>kept as written</small></span></div>
+        </div>
+        <div class="carta">
+          <h3>The tables other tools miss</h3>
+          <p>Tables inside iframes, a frozen first column next to the scrolling ones, headers kept in a separate table, data split across many pages. It finds them and puts them back together.</p>
+          <div class="confronto"><span class="prima">2 tables<small>names here, figures there</small></span><span class="freccia">→</span><span class="dopo">1 sheet<small>names and figures together</small></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione scura">
+    <div class="contenitore">
+      <h2>Three steps, nothing to set up</h2>
+      <div class="passi">
+        <div class="carta"><h3>Pin the icon</h3><p>After installing, click the puzzle piece at the top right of the browser and pin Export Button, so it's always one click away.</p></div>
+        <div class="carta"><h3>Open the page with your table</h3><p>A company portal, an old ERP screen, a report, a public page. Click the icon: the tables are listed, and each one lights up on the page as you hover it.</p></div>
+        <div class="carta"><h3>Choose Excel or CSV</h3><p>The file is built in your browser and downloaded, already formatted with filters on. Open it and get to work.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="banda">
+    <div class="contenitore">
+      <h2>Don't take our word for it: read the permissions</h2>
+      <p class="intro">Export Button reads the table and builds the file on your computer. No servers, no account, no tracking. That's why it's safe on internal portals too.</p>
+      <p class="intro">Before you install, the browser lists what an extension may touch. Under “Permissions” ours says: “This extension requires no special permissions”. Under “Site access” there is a single address: extensionpay.com, the page where you pay — nothing about the sites you visit. It reads the table only in the tab you are looking at, and only when you press the button. Check it any time in chrome://extensions → Details.</p>
+    </div>
+  </section>
+
+  <section class="sezione">
+    <div class="contenitore">
+      <h2>Free for everyday use. Pro is a <span class="unito">one-time</span> payment.</h2>
+      <div class="prezzi">
+        <div class="carta piano">
+          <p class="nome">Free</p>
+          <p class="costo">€0 <small>forever</small></p>
+          <ul>
+            <li>Export one table at a time to Excel or CSV</li>
+            <li>All the automatic cleaning</li>
+            <li>Formatted Excel with filters on</li>
+            <li>No row limit</li>
+          </ul>
+        </div>
+        <div class="carta piano pro">
+          <p class="nome">Pro</p>
+          <p class="costo">€14 <small>once, yours forever</small></p>
+          <ul>
+            <li>Everything in Free</li>
+            <li>Merges a table split across many pages, clicking “Next” for you</li>
+            <li>Saved exports you repeat with one click</li>
+            <li>PDF export</li>
+            <li>Several tables in one Excel file</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione scura" id="guides">
+    <div class="contenitore">
+      <h2>Guides</h2>
+      <p class="intro">Fixing a pasted table by hand? These guides explain why it breaks and how to fix it, with or without the extension.</p>
+      <div class="guide-elenco">
+        <a class="carta" href="guides/export-website-table-to-excel.html"><h3>How to export a table from a website to Excel</h3><p>Copy and paste, Excel's “From Web”, or an extension: what each one handles, and where it fails.</p><p class="leggi">Read the guide →</p></a>
+        <a class="carta" href="guides/excel-leading-zeros.html"><h3>Why Excel removes leading zeros, and how to keep them</h3><p>ZIP codes, IDs and phone numbers that lose their first zero, or turn into 3.33E+10.</p><p class="leggi">Read the guide →</p></a>
+        <a class="carta" href="guides/numbers-stored-as-text.html"><h3>Numbers pasted from a website become text in Excel</h3><p>Sums that return 0, and 1,234 that becomes 1.234: commas, dots and how to fix them.</p><p class="leggi">Read the guide →</p></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sezione chiusura">
+    <div class="contenitore">
+      <h2>Try it on your own table.</h2>
+      <p class="intro">Free, no account, a few seconds to install. Or try it first on a <a href="prova.html?hl=en">sample table</a>.</p>
+      <div class="azioni">
+        <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=landing&amp;utm_medium=en&amp;utm_campaign=index">Add to Chrome — it's free</a>
+        <a class="btn btn-secondario" href="https://microsoftedge.microsoft.com/addons/detail/ongeneafdldogmoknfiojaknbaehgfmg">Get it for Edge</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="piede">
+  <div class="contenitore">
+    <span>Export Button</span>
+    <a href="privacy-policy.html">Privacy policy</a>
+    <a href="https://talvok.github.io/">Talvok</a>
+    <a href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=landing&amp;utm_medium=en&amp;utm_campaign=index">Chrome Web Store</a>
+    <a href="https://microsoftedge.microsoft.com/addons/detail/ongeneafdldogmoknfiojaknbaehgfmg">Edge Add-ons</a>
+  </div>
+</footer>
+
+<script>
+  // Sulla pagina inglese, a chi ha il browser in un'altra lingua del sito si propone la sua (mai un rimando automatico)
+  (function () {
+    var l = (navigator.language || '').toLowerCase().slice(0, 2);
+    var testi = { pt: ['Também em português', 'pt/'], es: ['También en español', 'es/'], it: ['Anche in italiano', 'it/'] };
+    if (!testi[l]) return;
+    var a = document.getElementById('avviso-lingua');
+    a.innerHTML = '<a href="' + testi[l][1] + '">' + testi[l][0] + ' →</a>';
+    a.hidden = false;
+  })();
+</script>
+</body>
+</html>

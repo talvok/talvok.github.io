@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numeri come testo in Excel dopo averli copiati da un sito: come sistemarli — Bottone Esporta</title>
+<meta name="description" content="SOMMA dà 0, i numeri stanno a sinistra con un triangolino verde, oppure 1,250 dollari scritti all’americana diventano 1,25. Perché i numeri copiati da una pagina web finiscono come testo in Excel, e quattro modi per sistemarli.">
+<link rel="canonical" href="https://talvok.github.io/export-button/it/guide/numeri-come-testo-in-excel.html">
+<link rel="alternate" hreflang="en" href="https://talvok.github.io/export-button/guides/numbers-stored-as-text.html">
+<link rel="alternate" hreflang="pt-BR" href="https://talvok.github.io/export-button/pt/guias/numeros-como-texto-no-excel.html">
+<link rel="alternate" hreflang="es" href="https://talvok.github.io/export-button/es/guias/numeros-como-texto-en-excel.html">
+<link rel="alternate" hreflang="it" href="https://talvok.github.io/export-button/it/guide/numeri-come-testo-in-excel.html">
+<link rel="icon" href="../../icona.png">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="testata">
+  <div class="contenitore">
+    <a class="marca" href="../"><img src="../../icona.png" alt=""><span>Bottone Esporta</span></a>
+    <nav class="lingue" aria-label="Lingua">
+      <a href="../../guides/numbers-stored-as-text.html" hreflang="en">EN</a>
+      <a href="../../pt/guias/numeros-como-texto-no-excel.html" hreflang="pt-BR">PT</a>
+      <a href="../../es/guias/numeros-como-texto-en-excel.html" hreflang="es">ES</a>
+      <a href="numeri-come-testo-in-excel.html" hreflang="it" aria-current="page">IT</a>
+    </nav>
+    <a class="btn-testata" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=it&amp;utm_campaign=numeri-come-testo-in-excel">Aggiungi a Chrome</a>
+  </div>
+</header>
+
+<main class="articolo">
+  <p class="briciole"><a href="../">Bottone Esporta</a> › <a href="../#guide">Guide</a></p>
+  <h1>Numeri copiati da un sito che in Excel diventano testo</h1>
+  <p class="sotto">Sulla pagina la tabella era perfetta. In Excel gli importi stanno a sinistra, c’è un triangolino verde nell’angolo e <code>SOMMA</code> dà 0. O peggio: l’importo «1,250» di un sito americano, cioè milleduecentocinquanta dollari, è diventato 1,25. Ecco perché succede, e come sistemarlo.</p>
+
+  <h2>Tre problemi diversi</h2>
+  <table class="esempio">
+    <tr><th>Sulla pagina</th><th>In Excel</th><th>Cosa è successo</th></tr>
+    <tr><td>$1,250.00</td><td class="sbagliato">$1,250.00 (testo)</td><td>Il simbolo della valuta, o uno spazio di troppo, ha impedito a Excel di riconoscere un numero</td></tr>
+    <tr><td>1,250</td><td class="sbagliato">1,25</td><td>Il sito americano usa la virgola per le migliaia, il tuo Excel la legge come virgola dei decimali (e con il punto succede il contrario)</td></tr>
+    <tr><td>10/12/2026</td><td class="sbagliato">10 dicembre</td><td>Il sito scrive mese/giorno, il tuo Excel legge giorno/mese: era il 12 ottobre</td></tr>
+  </table>
+  <p>Il primo si vede subito. Il secondo e il terzo sono pericolosi, perché Excel non si lamenta: mostra un numero, solo che è quello sbagliato.</p>
+
+  <h2>Soluzione 1: Converti in numero</h2>
+  <p>Se le celle mostrano un triangolino verde, seleziona tutta la colonna, clicca l’icona di avviso che compare accanto alla selezione e scegli <span class="menu">Converti in numero</span>. Funziona quando il testo è un numero pulito, scritto nel tuo formato. Non serve quando c’è di mezzo il simbolo di una valuta o quando i separatori sono al contrario.</p>
+
+  <h2>Soluzione 2: Testo in colonne, con i separatori giusti</h2>
+  <p>È la soluzione più affidabile per gli importi scritti nel formato di un altro paese.</p>
+  <ol>
+    <li>Seleziona la colonna.</li>
+    <li><span class="menu">Dati › Testo in colonne</span> › <span class="menu">Delimitato</span> › Avanti, togli la spunta a tutti i delimitatori › Avanti.</li>
+    <li>Clicca <span class="menu">Avanzate</span> e indica il <strong>separatore decimale</strong> e il <strong>separatore delle migliaia</strong> come li scrive il <em>sito</em> (per 1,250.00: decimale «.» e migliaia «,»).</li>
+    <li>Lascia il formato della colonna su Generale e clicca <span class="menu">Fine</span>.</li>
+  </ol>
+  <p>Nello stesso ultimo passaggio puoi sistemare anche le date: scegli <span class="menu">Data</span> e, nell’elenco accanto, l’ordine che usa il sito (mese, giorno, anno per un sito americano).</p>
+
+  <h2>Soluzione 3: la formula NUMERO.VALORE</h2>
+  <p>Se preferisci non toccare la colonna originale, aggiungine una nuova con:</p>
+  <p><code>=NUMERO.VALORE(A2;".";",")</code></p>
+  <p>Il secondo argomento è il separatore decimale usato nel testo, il terzo è quello delle migliaia. Prima togli i simboli di valuta, per esempio <code>=NUMERO.VALORE(SOSTITUISCI(A2;"$";"");".";",")</code>. Poi copia la colonna e incollala di nuovo al suo posto scegliendo <span class="menu">Valori</span>.</p>
+
+  <h2>Soluzione 4: Sostituisci tutto</h2>
+  <p>Per un simbolo di valuta o uno spazio invisibile attaccato a ogni valore, premi <kbd>Ctrl</kbd>+<kbd>H</kbd>: nella casella <span class="menu">Trova</span> scrivi il simbolo, lascia vuota <span class="menu">Sostituisci con</span> e clicca <span class="menu">Sostituisci tutto</span>. Poi usa la soluzione 1. Attento a punti e virgole: sostituirli a mano su una colonna di valori misti è il modo in cui 1,5 diventa 15.</p>
+
+  <div class="riquadro attenzione">
+    <p><strong>Controlla prima di fidarti di un totale.</strong> Dopo qualsiasi correzione confronta due o tre valori con la pagina, compreso uno con i decimali e uno sopra i mille. Un importo sbagliato di mille volte, in mezzo a una colonna, sembra del tutto normale.</p>
+  </div>
+
+  <h2>Oppure esportalo già giusto</h2>
+  <p><a href="../">Bottone Esporta</a> legge la tabella nel tuo browser e scrive numeri veri prima che il file arrivi a te. Il separatore dei decimali lo ricava da tutta la colonna, non cella per cella: in una colonna con «$162,700», «$86,000» e «$1,250.50» la virgola separa le migliaia, in una con «1.250,00» e «0,586» separa i decimali. I simboli di valuta (€, $, £, R$, zł, ₺…) vengono tolti, le date vengono lette nell’ordine che usa la colonna e i codici con gli zeri iniziali restano testo.</p>
+
+  <section class="cta-guida">
+    <h2>Numeri che si sommano, dal primo clic</h2>
+    <p>Gratis per una tabella alla volta, senza account, e niente esce dal tuo browser.</p>
+    <div class="azioni">
+      <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=it&amp;utm_campaign=numeri-come-testo-in-excel">Aggiungi a Chrome — è gratis</a>
+      <a class="btn btn-secondario" href="../../prova.html?hl=it">Provalo su una tabella di esempio</a>
+    </div>
+  </section>
+
+  <nav class="correlate" aria-label="Guide correlate">
+    <h2>Guide correlate</h2>
+    <a href="esportare-tabella-da-sito-in-excel.html">Come esportare una tabella da un sito web in Excel</a>
+    <a href="excel-zeri-iniziali.html">Perché Excel toglie gli zeri iniziali, e come tenerli</a>
+  </nav>
+</main>
+
+<footer class="piede">
+  <div class="contenitore">
+    <span>Bottone Esporta</span>
+    <a href="../../privacy-policy.html">Informativa sulla privacy</a>
+    <a href="https://talvok.github.io/">Talvok</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Como exportar tabela de site para o Excel (3 jeitos) — Botão Exportar</title>
+<meta name="description" content="Três jeitos de levar uma tabela de site para o Excel: copiar e colar, o “Da Web” do Excel ou uma extensão do navegador. O que cada um resolve, onde quebra e qual usar em portais da empresa e sistemas antigos.">
+<link rel="canonical" href="https://talvok.github.io/export-button/pt/guias/exportar-tabela-de-site-para-excel.html">
+<link rel="alternate" hreflang="en" href="https://talvok.github.io/export-button/guides/export-website-table-to-excel.html">
+<link rel="alternate" hreflang="pt-BR" href="https://talvok.github.io/export-button/pt/guias/exportar-tabela-de-site-para-excel.html">
+<link rel="alternate" hreflang="es" href="https://talvok.github.io/export-button/es/guias/exportar-tabla-web-a-excel.html">
+<link rel="alternate" hreflang="it" href="https://talvok.github.io/export-button/it/guide/esportare-tabella-da-sito-in-excel.html">
+<link rel="icon" href="../../icona.png">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="testata">
+  <div class="contenitore">
+    <a class="marca" href="../"><img src="../../icona.png" alt=""><span>Botão Exportar</span></a>
+    <nav class="lingue" aria-label="Idioma">
+      <a href="../../guides/export-website-table-to-excel.html" hreflang="en">EN</a>
+      <a href="exportar-tabela-de-site-para-excel.html" hreflang="pt-BR" aria-current="page">PT</a>
+      <a href="../../es/guias/exportar-tabla-web-a-excel.html" hreflang="es">ES</a>
+      <a href="../../it/guide/esportare-tabella-da-sito-in-excel.html" hreflang="it">IT</a>
+    </nav>
+    <a class="btn-testata" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=pt&amp;utm_campaign=exportar-tabela-de-site-para-excel">Adicionar ao Chrome</a>
+  </div>
+</header>
+
+<main class="articolo">
+  <p class="briciole"><a href="../">Botão Exportar</a> › <a href="../#guias">Guias</a></p>
+  <h1>Como exportar uma tabela de um site para o Excel</h1>
+  <p class="sotto">Existem três jeitos. Todos funcionam em uma página pública simples. Nem todos funcionam em um portal da empresa, em uma tabela dentro de um quadro ou em uma lista que se estende por 40 páginas. Veja o que cada um resolve.</p>
+
+  <h2>1. Copiar e colar</h2>
+  <p>Selecione a tabela com o mouse, aperte <kbd>Ctrl</kbd>+<kbd>C</kbd>, clique em uma célula do Excel e aperte <kbd>Ctrl</kbd>+<kbd>V</kbd>. Se o resultado vier com as cores e as fontes do site, clique no pequeno botão de opções de colagem que aparece ao lado dos dados e escolha a opção que usa a formatação de destino, a da planilha.</p>
+  <p>É o jeito mais rápido e, em uma tabela pequena e limpa, dá conta. Os problemas começam quando você tenta usar os dados:</p>
+  <ul>
+    <li><strong>Os números chegam como texto.</strong> “R$ 1.250,00” ou “$1,250.00” muitas vezes caem no Excel como texto: ficam encostados à esquerda, e a <code>SOMA</code> dá 0. Veja <a href="numeros-como-texto-no-excel.html">números colados de um site viram texto</a>.</li>
+    <li><strong>Os códigos perdem os zeros.</strong> Um CEP como 01310100 vira 1310100, e um número longo, como um CPF, vira 3,33E+10. Veja <a href="excel-zero-a-esquerda.html">por que o Excel apaga o zero à esquerda</a>.</li>
+    <li><strong>As datas são lidas ao contrário</strong> quando o site e o seu Excel usam ordens diferentes (10/12 é 12 de outubro em um site americano e 10 de dezembro no Brasil).</li>
+    <li><strong>Vem lixo junto:</strong> linhas vazias, o cabeçalho repetido a cada 20 linhas, botões e ícones da página.</li>
+    <li><strong>Uma página por vez.</strong> Se a tabela está dividida em páginas com um botão “Próximo”, você repete tudo para cada página.</li>
+  </ul>
+
+  <h2>2. O “Da Web” do Excel</h2>
+  <p>O Excel consegue ler uma página da web sozinho. No Excel para Windows: <span class="menu">Dados › Obter Dados › De Outras Fontes › Da Web</span> (em algumas versões é direto <span class="menu">Dados › Da Web</span>). Cole o endereço da página, e o Excel mostra uma lista das tabelas que encontrou. Escolha uma e clique em <span class="menu">Carregar</span>, ou em <span class="menu">Transformar Dados</span> para acertar os tipos das colunas antes de carregar.</p>
+  <p>É uma boa opção para páginas públicas que você precisa atualizar com frequência, porque a consulta se atualiza com um clique. Mas o Excel abre a página por conta própria, fora do seu navegador, e isso tem limites:</p>
+  <ul>
+    <li><strong>Páginas que pedem login não funcionam.</strong> O Excel não tem a sua sessão, então um portal da empresa, uma página do internet banking ou um painel administrativo costumam mostrar a tela de login, ou nada.</li>
+    <li><strong>Tabelas que a página monta depois de carregar podem não aparecer</strong>, dependendo de como o site as constrói.</li>
+    <li><strong>Endereços internos</strong> (intranet, telas antigas do ERP) muitas vezes não podem ser acessados do mesmo jeito.</li>
+  </ul>
+
+  <h2>3. Uma extensão do navegador</h2>
+  <p>Uma extensão trabalha <em>dentro</em> do seu navegador, na página que você já está vendo. Essa é a diferença: se você enxerga a tabela, ela consegue ler, mesmo com login, dentro de um quadro ou em um portal interno.</p>
+  <p>Com o <a href="../">Botão Exportar</a> é assim:</p>
+  <ol>
+    <li>Abra a página com a tabela.</li>
+    <li>Clique no ícone da extensão. Ela lista as tabelas da página; passe o mouse sobre uma e ela se ilumina, para você saber qual é qual.</li>
+    <li>Clique em <strong>Excel</strong> (ou CSV). O arquivo é montado no seu navegador e baixado.</li>
+  </ol>
+  <p>Antes de gravar o arquivo, ela limpa os dados: valores viram números de verdade (qualquer que seja o formato: R$ 1.234,56, $1,234.56, 1.234,56 €), datas viram datas, códigos com zero à esquerda ficam como estão escritos, linhas vazias e cabeçalhos repetidos saem. Tabelas divididas em duas na página (uma primeira coluna fixa, ou cabeçalhos guardados em uma tabela separada) são juntadas de novo.</p>
+
+  <div class="riquadro consiglio">
+    <p><strong>Tabela dividida em várias páginas?</strong> Na versão Pro, a extensão clica em “Próximo” para você, página após página, e entrega um único arquivo. Ela para sozinha na última página.</p>
+  </div>
+
+  <h2>Qual usar</h2>
+  <table class="esempio">
+    <tr><th>Situação</th><th>Melhor jeito</th></tr>
+    <tr><td>Tabela pública pequena, usada uma vez</td><td>Copiar e colar</td></tr>
+    <tr><td>Tabela pública que você atualiza toda semana</td><td>O “Da Web” do Excel</td></tr>
+    <tr><td>Portal da empresa, ERP, painel administrativo (com login)</td><td>Extensão do navegador</td></tr>
+    <tr><td>Tabela dentro de um quadro, ou dividida em duas</td><td>Extensão do navegador</td></tr>
+    <tr><td>Valores, datas e códigos que precisam sair certos</td><td>Extensão do navegador, ou o “Da Web” com os tipos das colunas definidos à mão</td></tr>
+  </table>
+
+  <section class="cta-guida">
+    <h2>Experimente na sua tabela</h2>
+    <p>O Botão Exportar é grátis para uma tabela por vez, sem cadastro. Tudo acontece no seu navegador: nada é enviado.</p>
+    <div class="azioni">
+      <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=pt&amp;utm_campaign=exportar-tabela-de-site-para-excel">Adicionar ao Chrome — é grátis</a>
+      <a class="btn btn-secondario" href="https://microsoftedge.microsoft.com/addons/detail/ongeneafdldogmoknfiojaknbaehgfmg">Baixar para o Edge</a>
+    </div>
+  </section>
+
+  <nav class="correlate" aria-label="Guias relacionados">
+    <h2>Guias relacionados</h2>
+    <a href="excel-zero-a-esquerda.html">Por que o Excel apaga o zero à esquerda, e como manter</a>
+    <a href="numeros-como-texto-no-excel.html">Números colados de um site viram texto no Excel</a>
+  </nav>
+</main>
+
+<footer class="piede">
+  <div class="contenitore">
+    <span>Botão Exportar</span>
+    <a href="../../privacy-policy.html">Política de privacidade</a>
+    <a href="https://talvok.github.io/">Talvok</a>
+  </div>
+</footer>
+</body>
+</html>

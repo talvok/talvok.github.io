@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excel quita los ceros a la izquierda (códigos postales, facturas, teléfonos): por qué pasa y cómo conservarlos — Botón Exportar</title>
+<meta name="description" content="Excel convierte 08001 en 8001 y los números largos en 3,49E+10. Por qué Excel quita los ceros a la izquierda, cómo conservarlos al pegar o importar datos y la opción de Excel que lo desactiva.">
+<link rel="canonical" href="https://talvok.github.io/export-button/es/guias/excel-ceros-a-la-izquierda.html">
+<link rel="alternate" hreflang="en" href="https://talvok.github.io/export-button/guides/excel-leading-zeros.html">
+<link rel="alternate" hreflang="pt-BR" href="https://talvok.github.io/export-button/pt/guias/excel-zero-a-esquerda.html">
+<link rel="alternate" hreflang="es" href="https://talvok.github.io/export-button/es/guias/excel-ceros-a-la-izquierda.html">
+<link rel="alternate" hreflang="it" href="https://talvok.github.io/export-button/it/guide/excel-zeri-iniziali.html">
+<link rel="icon" href="../../icona.png">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="testata">
+  <div class="contenitore">
+    <a class="marca" href="../"><img src="../../icona.png" alt=""><span>Botón Exportar</span></a>
+    <nav class="lingue" aria-label="Idioma">
+      <a href="../../guides/excel-leading-zeros.html" hreflang="en">EN</a>
+      <a href="../../pt/guias/excel-zero-a-esquerda.html" hreflang="pt-BR">PT</a>
+      <a href="excel-ceros-a-la-izquierda.html" hreflang="es" aria-current="page">ES</a>
+      <a href="../../it/guide/excel-zeri-iniziali.html" hreflang="it">IT</a>
+    </nav>
+    <a class="btn-testata" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=es&amp;utm_campaign=excel-ceros-a-la-izquierda">Añadir a Chrome</a>
+  </div>
+</header>
+
+<main class="articolo">
+  <p class="briciole"><a href="../">Botón Exportar</a> › <a href="../#guias">Guías</a></p>
+  <h1>Por qué Excel quita los ceros a la izquierda y cómo conservarlos</h1>
+  <p class="sotto">Pegas una lista de clientes y el código postal 08001 se convierte en 8001. Un teléfono pasa a ser 3,49E+10. Un número de tarjeta o de pedido de 16 dígitos acaba en 0 cuando no debería. La causa es siempre la misma, y se puede evitar.</p>
+
+  <h2>Por qué pasa</h2>
+  <p>Cuando una celda recibe algo formado solo por dígitos, Excel decide que es un número. Un número no tiene ceros a la izquierda, así que 08001 se guarda como 8001. Hay dos reglas más que lo empeoran:</p>
+  <ul>
+    <li>En formato General, los números largos <strong>se muestran en notación científica</strong>: 34934567890 aparece como 3,49E+10 cuando no cabe en la columna, y a partir de 12 dígitos pasa siempre.</li>
+    <li>Excel solo guarda <strong>15 dígitos significativos</strong>. A partir del 16.º, el resto se convierte en ceros, y no es solo cómo se ve: el valor se pierde.</li>
+  </ul>
+  <table class="esempio">
+    <tr><th>Lo que muestra la página</th><th>Lo que guarda Excel</th></tr>
+    <tr><td>Código postal 08001</td><td class="sbagliato">8001</td></tr>
+    <tr><td>Factura 000127</td><td class="sbagliato">127</td></tr>
+    <tr><td>Teléfono 0034934567890</td><td class="sbagliato">3,49E+10</td></tr>
+    <tr><td>Pedido 4012888888881881</td><td class="sbagliato">4012888888881880</td></tr>
+  </table>
+  <p>Un código no es un número: nadie suma códigos postales. Tiene que quedarse como texto, tal como está escrito.</p>
+
+  <h2>Cómo conservar los ceros</h2>
+
+  <h3>Antes de pegar: pon la columna en formato Texto</h3>
+  <ol>
+    <li>Selecciona las columnas que van a recibir códigos.</li>
+    <li>Clic derecho › <span class="menu">Formato de celdas › Número › Texto</span> › Aceptar.</li>
+    <li>Pega desde <span class="menu">Inicio › Pegar</span> eligiendo la opción que adapta lo pegado al formato de destino, para que se mantenga el formato Texto.</li>
+  </ol>
+  <p>Funciona, pero tienes que acordarte antes de cada pegado y elegir bien las columnas: si pones por error los importes en Texto, dejan de sumar.</p>
+
+  <h3>Al importar: elige el tipo de columna</h3>
+  <p>Si los datos vienen de un archivo CSV o de la opción <span class="menu">Datos › Obtener datos › De otras fuentes › De la Web</span>, abre <span class="menu">Transformar datos</span> y pon las columnas de códigos en <strong>Texto</strong> antes de cargar. En el Asistente para importar texto, la misma elección está en el último paso, en <span class="menu">Formato de datos de columna › Texto</span>.</p>
+
+  <h3>Desactiva la conversión (Microsoft 365)</h3>
+  <p>Las versiones recientes de Excel (Microsoft 365 y Excel 2024) permiten desactivar este comportamiento: <span class="menu">Archivo › Opciones › Datos › Conversión automática de datos</span>, desmarca <em>Eliminar los ceros a la izquierda y convertir a número</em> y también la opción de conservar solo los primeros 15 dígitos. En Mac: <span class="menu">Excel › Preferencias › Editar</span>. Se aplica a todo lo que escribes y pegas, así que los códigos se quedan como están; los números que de verdad son números se siguen reconociendo.</p>
+
+  <h3>¿Ya se han perdido? Recupéralos con TEXTO</h3>
+  <p>Si la columna tiene siempre la misma longitud (un código postal de 5 dígitos), puedes volver a poner los ceros con una fórmula: <code>=TEXTO(A2;"00000")</code>, con tantos ceros como dígitos tenga el código. Si tu Excel separa los argumentos con coma en lugar de punto y coma, escribe <code>=TEXTO(A2,"00000")</code>. También puedes usar el formato de número personalizado <code>00000</code>, que muestra los ceros aunque el valor siga siendo un número. Ninguna de las dos cosas recupera los dígitos perdidos a partir del 15.º: esos ya no vuelven.</p>
+
+  <div class="riquadro attenzione">
+    <p><strong>No lo arregles a mano con un apóstrofo.</strong> Escribir <code>'08001</code> sirve para una celda, no para 3.000 filas. Y no ayuda con una lista que vuelves a exportar cada semana.</p>
+  </div>
+
+  <h2>O deja que lo haga la exportación</h2>
+  <p><a href="../">Botón Exportar</a> reconoce los códigos antes de escribir el archivo: los valores con ceros a la izquierda y las secuencias largas de dígitos (teléfonos, números de identificación fiscal, números de pedido) se escriben como texto, exactamente como en la página. En las columnas llamadas CP, Código, Factura, Pedido, NIF y similares, los números se escriben sin separador de miles, así que 10045 no se convierte en 10.045. Los importes y las cantidades de al lado siguen siendo números de verdad que puedes sumar. Nada que configurar columna por columna.</p>
+
+  <section class="cta-guida">
+    <h2>Exporta sin perder ni un cero</h2>
+    <p>Gratis para una tabla cada vez, sin cuenta, y nada sale de tu navegador.</p>
+    <div class="azioni">
+      <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=es&amp;utm_campaign=excel-ceros-a-la-izquierda">Añadir a Chrome — es gratis</a>
+      <a class="btn btn-secondario" href="../../prova.html?hl=es">Pruébalo con una tabla de ejemplo</a>
+    </div>
+  </section>
+
+  <nav class="correlate" aria-label="Guías relacionadas">
+    <h2>Guías relacionadas</h2>
+    <a href="exportar-tabla-web-a-excel.html">Cómo exportar una tabla de una página web a Excel</a>
+    <a href="numeros-como-texto-en-excel.html">Números pegados desde una web que Excel guarda como texto</a>
+  </nav>
+</main>
+
+<footer class="piede">
+  <div class="contenitore">
+    <span>Botón Exportar</span>
+    <a href="../../privacy-policy.html">Política de privacidad</a>
+    <a href="https://talvok.github.io/">Talvok</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Excel removes leading zeros (ZIP codes, IDs, phone numbers) and how to keep them — Export Button</title>
+<meta name="description" content="Excel turns 02134 into 2134 and long IDs into 3.33E+10. Why it happens, how to keep leading zeros when you paste or import data, and the Excel setting that switches it off.">
+<link rel="canonical" href="https://talvok.github.io/export-button/guides/excel-leading-zeros.html">
+<link rel="alternate" hreflang="en" href="https://talvok.github.io/export-button/guides/excel-leading-zeros.html">
+<link rel="alternate" hreflang="pt-BR" href="https://talvok.github.io/export-button/pt/guias/excel-zero-a-esquerda.html">
+<link rel="alternate" hreflang="es" href="https://talvok.github.io/export-button/es/guias/excel-ceros-a-la-izquierda.html">
+<link rel="alternate" hreflang="it" href="https://talvok.github.io/export-button/it/guide/excel-zeri-iniziali.html">
+<link rel="icon" href="../icona.png">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="testata">
+  <div class="contenitore">
+    <a class="marca" href="../"><img src="../icona.png" alt=""><span>Export Button</span></a>
+    <nav class="lingue" aria-label="Language">
+      <a href="excel-leading-zeros.html" hreflang="en" aria-current="page">EN</a>
+      <a href="../pt/guias/excel-zero-a-esquerda.html" hreflang="pt-BR">PT</a>
+      <a href="../es/guias/excel-ceros-a-la-izquierda.html" hreflang="es">ES</a>
+      <a href="../it/guide/excel-zeri-iniziali.html" hreflang="it">IT</a>
+    </nav>
+    <a class="btn-testata" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=en&amp;utm_campaign=excel-leading-zeros">Add to Chrome</a>
+  </div>
+</header>
+
+<main class="articolo">
+  <p class="briciole"><a href="../">Export Button</a> › <a href="../#guides">Guides</a></p>
+  <h1>Why Excel removes leading zeros, and how to keep them</h1>
+  <p class="sotto">You paste a list of customers and the ZIP code 02134 becomes 2134. A phone number turns into 3.33E+10. A 16-digit card or order number ends in 0 when it shouldn't. It's the same cause each time, and it can be avoided.</p>
+
+  <h2>Why it happens</h2>
+  <p>When a cell receives something made only of digits, Excel decides it's a number. A number has no leading zeros, so 02134 is stored as 2134. Two more rules make it worse:</p>
+  <ul>
+    <li>In the General format, long numbers are <strong>displayed in scientific notation</strong>: 33312345678 shows as 3.33E+10 when it doesn't fit the column, and from 12 digits up it always does.</li>
+    <li>Excel keeps only <strong>15 significant digits</strong>. From the 16th digit on, the rest becomes zeros, and that's not just display: the value is lost.</li>
+  </ul>
+  <table class="esempio">
+    <tr><th>What the page shows</th><th>What Excel keeps</th></tr>
+    <tr><td>ZIP code 02134</td><td class="sbagliato">2134</td></tr>
+    <tr><td>Invoice 000127</td><td class="sbagliato">127</td></tr>
+    <tr><td>Phone 33312345678</td><td class="sbagliato">3.33E+10</td></tr>
+    <tr><td>Order 4012888888881881</td><td class="sbagliato">4012888888881880</td></tr>
+  </table>
+  <p>For a code, these are not numbers: you never add up ZIP codes. They must stay text, exactly as written.</p>
+
+  <h2>How to keep the zeros</h2>
+
+  <h3>Before pasting: make the column Text</h3>
+  <ol>
+    <li>Select the columns that will hold codes.</li>
+    <li>Right click › <span class="menu">Format Cells › Number › Text</span> › OK.</li>
+    <li>Paste with <span class="menu">Home › Paste › Match Destination Formatting</span>, so the Text format is kept.</li>
+  </ol>
+  <p>It works, but you have to remember it before every paste, and choose the right columns: set the amounts to Text by mistake and they stop adding up.</p>
+
+  <h3>When importing: set the column type</h3>
+  <p>If the data comes from a CSV file or from <span class="menu">Data › From Web</span>, open <span class="menu">Transform Data</span> and set the code columns to <strong>Text</strong> before loading. In the Text Import Wizard, the same choice is in the last step, under <span class="menu">Column data format › Text</span>.</p>
+
+  <h3>Switch off the conversion (Microsoft 365)</h3>
+  <p>Recent versions of Excel (Microsoft 365 and Excel 2024) let you turn this behavior off: <span class="menu">File › Options › Data › Automatic Data Conversion</span>, untick <em>Remove leading zeros and convert to number</em>, and <em>Keep the first 15 digits of long numbers and display in scientific notation if required</em>. On a Mac: <span class="menu">Excel › Preferences › Edit</span>. It applies to everything you type and paste, so codes stay as they are; numbers that really are numbers are still recognized.</p>
+
+  <h3>Already lost them? Rebuild with TEXT</h3>
+  <p>If the column always has the same length (a 5-digit ZIP code), you can put the zeros back with a formula: <code>=TEXT(A2,"00000")</code>, with as many zeros as the length. Or use a custom number format <code>00000</code>, which shows the zeros while the value stays a number. It doesn't help with digits lost after the 15th: those are gone.</p>
+
+  <div class="riquadro attenzione">
+    <p><strong>Don't fix it with an apostrophe by hand.</strong> Typing <code>'02134</code> works for one cell, not for 3,000 rows. And it doesn't help with a list you export again every week.</p>
+  </div>
+
+  <h2>Or let the export do it</h2>
+  <p><a href="../">Export Button</a> recognizes codes before writing the file: values with leading zeros and long digit sequences (phone numbers, tax IDs, order numbers) are written as text, exactly as on the page. In columns named ZIP, ID, Code, Invoice and the like, numbers are written without a thousands separator, so 10045 doesn't turn into 10,045. Amounts and quantities next to them stay real numbers you can add up. Nothing to set, column by column.</p>
+
+  <section class="cta-guida">
+    <h2>Export without losing a zero</h2>
+    <p>Free for one table at a time, no account, and nothing leaves your browser.</p>
+    <div class="azioni">
+      <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=en&amp;utm_campaign=excel-leading-zeros">Add to Chrome — it's free</a>
+      <a class="btn btn-secondario" href="../prova.html?hl=en">Try it on a sample table</a>
+    </div>
+  </section>
+
+  <nav class="correlate" aria-label="Related guides">
+    <h2>Related guides</h2>
+    <a href="export-website-table-to-excel.html">How to export a table from a website to Excel</a>
+    <a href="numbers-stored-as-text.html">Numbers pasted from a website become text in Excel</a>
+  </nav>
+</main>
+
+<footer class="piede">
+  <div class="contenitore">
+    <span>Export Button</span>
+    <a href="../privacy-policy.html">Privacy policy</a>
+    <a href="https://talvok.github.io/">Talvok</a>
+  </div>
+</footer>
+</body>
+</html>

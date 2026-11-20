@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cómo exportar una tabla de una página web a Excel (3 maneras) — Botón Exportar</title>
+<meta name="description" content="Tres maneras de pasar una tabla de una página web a Excel: copiar y pegar, la opción «De la Web» de Excel o una extensión del navegador. Qué resuelve cada una, dónde falla y cuál usar en portales de empresa y programas de gestión antiguos.">
+<link rel="canonical" href="https://talvok.github.io/export-button/es/guias/exportar-tabla-web-a-excel.html">
+<link rel="alternate" hreflang="en" href="https://talvok.github.io/export-button/guides/export-website-table-to-excel.html">
+<link rel="alternate" hreflang="pt-BR" href="https://talvok.github.io/export-button/pt/guias/exportar-tabela-de-site-para-excel.html">
+<link rel="alternate" hreflang="es" href="https://talvok.github.io/export-button/es/guias/exportar-tabla-web-a-excel.html">
+<link rel="alternate" hreflang="it" href="https://talvok.github.io/export-button/it/guide/esportare-tabella-da-sito-in-excel.html">
+<link rel="icon" href="../../icona.png">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="testata">
+  <div class="contenitore">
+    <a class="marca" href="../"><img src="../../icona.png" alt=""><span>Botón Exportar</span></a>
+    <nav class="lingue" aria-label="Idioma">
+      <a href="../../guides/export-website-table-to-excel.html" hreflang="en">EN</a>
+      <a href="../../pt/guias/exportar-tabela-de-site-para-excel.html" hreflang="pt-BR">PT</a>
+      <a href="exportar-tabla-web-a-excel.html" hreflang="es" aria-current="page">ES</a>
+      <a href="../../it/guide/esportare-tabella-da-sito-in-excel.html" hreflang="it">IT</a>
+    </nav>
+    <a class="btn-testata" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=es&amp;utm_campaign=exportar-tabla-web-a-excel">Añadir a Chrome</a>
+  </div>
+</header>
+
+<main class="articolo">
+  <p class="briciole"><a href="../">Botón Exportar</a> › <a href="../#guias">Guías</a></p>
+  <h1>Cómo exportar una tabla de una página web a Excel</h1>
+  <p class="sotto">Hay tres maneras de hacerlo. Todas funcionan en una página pública sencilla. No todas funcionan en un portal de empresa, en una tabla dentro de un marco o en una lista que ocupa 40 páginas. Esto es lo que resuelve cada una.</p>
+
+  <h2>1. Copiar y pegar</h2>
+  <p>Selecciona la tabla, presiona <kbd>Ctrl</kbd>+<kbd>C</kbd>, haz clic en una celda de Excel y presiona <kbd>Ctrl</kbd>+<kbd>V</kbd>. Si el resultado conserva los colores y las fuentes de la web, pega desde <span class="menu">Inicio › Pegar</span> y elige la opción que adapta lo pegado al formato de destino.</p>
+  <p>Es la forma más rápida y, con una tabla pequeña y limpia, basta. Los problemas empiezan cuando intentas usar los datos:</p>
+  <ul>
+    <li><strong>Los números llegan como texto.</strong> «$1,250.00» o «1.250,00 €» a menudo caen en Excel como texto: se quedan a la izquierda y <code>SUMA</code> devuelve 0. Mira <a href="numeros-como-texto-en-excel.html">números pegados desde una web que Excel guarda como texto</a>.</li>
+    <li><strong>Los códigos pierden los ceros.</strong> Un código postal como 08001 se convierte en 8001, y un número largo en 3,49E+10. Mira <a href="excel-ceros-a-la-izquierda.html">por qué Excel quita los ceros a la izquierda</a>.</li>
+    <li><strong>Las fechas se leen al revés</strong> cuando la web y tu Excel usan un orden distinto (10/12 es el 12 de octubre en Estados Unidos y el 10 de diciembre en casi todo el resto del mundo).</li>
+    <li><strong>Viene basura:</strong> filas vacías, la cabecera repetida cada 20 filas, botones e iconos de la página.</li>
+    <li><strong>Solo una página cada vez.</strong> Si la tabla está repartida en varias páginas con un botón «Siguiente», repites todo en cada página.</li>
+  </ul>
+
+  <h2>2. La opción «De la Web» de Excel</h2>
+  <p>Excel puede leer una página web por sí solo. En Excel para Windows: <span class="menu">Datos › Obtener datos › De otras fuentes › De la Web</span> (en algunas versiones, el comando está directamente en la pestaña <span class="menu">Datos</span>). Pega la dirección de la página y Excel muestra, en la ventana <span class="menu">Navegador</span>, la lista de tablas que ha encontrado. Elige una y haz clic en <span class="menu">Cargar</span>, o en <span class="menu">Transformar datos</span> para corregir los tipos de columna antes de cargarla.</p>
+  <p>Es una buena opción para páginas públicas que tienes que actualizar a menudo, porque la consulta se actualiza con un clic. Pero Excel abre la página por su cuenta, fuera de tu navegador, y eso tiene límites:</p>
+  <ul>
+    <li><strong>Las páginas con inicio de sesión no funcionan.</strong> Excel no tiene tu sesión, así que un portal de empresa, la banca en línea o un panel de administración suelen mostrar una página de acceso o nada en absoluto.</li>
+    <li><strong>Pueden faltar las tablas que la página construye después de cargarse</strong>, según cómo esté hecha la web.</li>
+    <li><strong>Las direcciones internas</strong> (intranet, pantallas de ERP antiguas) a menudo no son accesibles de la misma manera.</li>
+  </ul>
+
+  <h2>3. Una extensión del navegador</h2>
+  <p>Una extensión funciona <em>dentro</em> de tu navegador, en la página que ya estás viendo. Esa es la diferencia: si ves la tabla, la extensión puede leerla, aunque esté detrás de un inicio de sesión, dentro de un marco o en un portal interno.</p>
+  <p>Con <a href="../">Botón Exportar</a> es así:</p>
+  <ol>
+    <li>Abre la página con la tabla.</li>
+    <li>Haz clic en el icono de la extensión. Aparece la lista de tablas de la página; pasa el cursor por encima de una y se ilumina, así sabes cuál es cuál.</li>
+    <li>Haz clic en <strong>Excel</strong> (o CSV). El archivo se crea en tu navegador y se descarga.</li>
+  </ol>
+  <p>Antes de escribir el archivo, limpia los datos: los importes se convierten en números de verdad (sea cual sea el formato: 1.234,56 €, $1,234.56, R$ 1.234,56), las fechas se convierten en fechas, los códigos con ceros a la izquierda se quedan como están escritos y se eliminan las filas vacías y las cabeceras repetidas. Las tablas partidas en dos en la página (una primera columna fija, o las cabeceras en una tabla aparte) se vuelven a unir.</p>
+
+  <div class="riquadro consiglio">
+    <p><strong>¿Tabla repartida en muchas páginas?</strong> En la versión Pro, la extensión hace clic en «Siguiente» por ti, página tras página, y te entrega un único archivo. Se detiene sola en la última página.</p>
+  </div>
+
+  <h2>Cuál usar</h2>
+  <table class="esempio">
+    <tr><th>Situación</th><th>La mejor opción</th></tr>
+    <tr><td>Tabla pública pequeña, para usar una vez</td><td>Copiar y pegar</td></tr>
+    <tr><td>Tabla pública que actualizas cada semana</td><td>«De la Web» de Excel</td></tr>
+    <tr><td>Portal de empresa, ERP, panel de administración (con inicio de sesión)</td><td>Extensión del navegador</td></tr>
+    <tr><td>Tabla dentro de un marco, o partida en dos</td><td>Extensión del navegador</td></tr>
+    <tr><td>Importes, fechas y códigos que tienen que salir bien</td><td>Extensión del navegador, o «De la Web» con los tipos de columna puestos a mano</td></tr>
+  </table>
+
+  <section class="cta-guida">
+    <h2>Pruébalo con tu tabla</h2>
+    <p>Botón Exportar es gratis para una tabla cada vez, sin cuenta. Todo ocurre en tu navegador: no se sube nada.</p>
+    <div class="azioni">
+      <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=es&amp;utm_campaign=exportar-tabla-web-a-excel">Añadir a Chrome — es gratis</a>
+      <a class="btn btn-secondario" href="https://microsoftedge.microsoft.com/addons/detail/ongeneafdldogmoknfiojaknbaehgfmg">Descargar para Edge</a>
+    </div>
+  </section>
+
+  <nav class="correlate" aria-label="Guías relacionadas">
+    <h2>Guías relacionadas</h2>
+    <a href="excel-ceros-a-la-izquierda.html">Por qué Excel quita los ceros a la izquierda y cómo conservarlos</a>
+    <a href="numeros-como-texto-en-excel.html">Números pegados desde una web que Excel guarda como texto</a>
+  </nav>
+</main>
+
+<footer class="piede">
+  <div class="contenitore">
+    <span>Botón Exportar</span>
+    <a href="../../privacy-policy.html">Política de privacidad</a>
+    <a href="https://talvok.github.io/">Talvok</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Excel apaga o zero à esquerda? Como manter o zero no CEP, CPF e telefone — Botão Exportar</title>
+<meta name="description" content="O Excel transforma 01310100 em 1310100 e números longos em 3,33E+10. Por que o zero à esquerda some, como mantê-lo ao colar ou importar dados e a opção do Excel que desliga essa conversão.">
+<link rel="canonical" href="https://talvok.github.io/export-button/pt/guias/excel-zero-a-esquerda.html">
+<link rel="alternate" hreflang="en" href="https://talvok.github.io/export-button/guides/excel-leading-zeros.html">
+<link rel="alternate" hreflang="pt-BR" href="https://talvok.github.io/export-button/pt/guias/excel-zero-a-esquerda.html">
+<link rel="alternate" hreflang="es" href="https://talvok.github.io/export-button/es/guias/excel-ceros-a-la-izquierda.html">
+<link rel="alternate" hreflang="it" href="https://talvok.github.io/export-button/it/guide/excel-zeri-iniziali.html">
+<link rel="icon" href="../../icona.png">
+<link rel="stylesheet" href="../../assets/site.css">
+</head>
+<body>
+
+<header class="testata">
+  <div class="contenitore">
+    <a class="marca" href="../"><img src="../../icona.png" alt=""><span>Botão Exportar</span></a>
+    <nav class="lingue" aria-label="Idioma">
+      <a href="../../guides/excel-leading-zeros.html" hreflang="en">EN</a>
+      <a href="excel-zero-a-esquerda.html" hreflang="pt-BR" aria-current="page">PT</a>
+      <a href="../../es/guias/excel-ceros-a-la-izquierda.html" hreflang="es">ES</a>
+      <a href="../../it/guide/excel-zeri-iniziali.html" hreflang="it">IT</a>
+    </nav>
+    <a class="btn-testata" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=pt&amp;utm_campaign=excel-zero-a-esquerda">Adicionar ao Chrome</a>
+  </div>
+</header>
+
+<main class="articolo">
+  <p class="briciole"><a href="../">Botão Exportar</a> › <a href="../#guias">Guias</a></p>
+  <h1>Por que o Excel apaga o zero à esquerda, e como manter</h1>
+  <p class="sotto">Você cola uma lista de clientes e o CEP 01310100 vira 1310100. Um CPF vira 3,33E+10. Um número de pedido ou de cartão com 16 dígitos termina em 0 quando não deveria. A causa é sempre a mesma, e dá para evitar.</p>
+
+  <h2>Por que acontece</h2>
+  <p>Quando uma célula recebe algo feito só de dígitos, o Excel decide que é um número. Número não tem zero à esquerda, então 01310100 é guardado como 1310100. Duas outras regras pioram a situação:</p>
+  <ul>
+    <li>No formato Geral, números longos <strong>aparecem em notação científica</strong>: 33312345678 vira 3,33E+10 quando não cabe na coluna, e com 12 dígitos ou mais vira sempre.</li>
+    <li>O Excel guarda só <strong>15 dígitos significativos</strong>. Do 16º dígito em diante, o resto vira zero, e não é só aparência: o valor se perde.</li>
+  </ul>
+  <table class="esempio">
+    <tr><th>O que a página mostra</th><th>O que o Excel guarda</th></tr>
+    <tr><td>CEP 01310100</td><td class="sbagliato">1310100</td></tr>
+    <tr><td>Nota fiscal 000127</td><td class="sbagliato">127</td></tr>
+    <tr><td>CPF 33312345678</td><td class="sbagliato">3,33E+10</td></tr>
+    <tr><td>Pedido 4012888888881881</td><td class="sbagliato">4012888888881880</td></tr>
+  </table>
+  <p>Para um código, isso não é número: ninguém soma CEPs. Eles precisam continuar texto, exatamente como estão escritos.</p>
+
+  <h2>Como manter os zeros</h2>
+
+  <h3>Antes de colar: deixe a coluna como Texto</h3>
+  <ol>
+    <li>Selecione as colunas que vão receber códigos.</li>
+    <li>Botão direito › <span class="menu">Formatar Células › Número › Texto</span> › OK.</li>
+    <li>Cole e, no pequeno botão de opções de colagem que aparece ao lado, escolha a opção que usa a formatação de destino: assim o formato Texto é mantido.</li>
+  </ol>
+  <p>Funciona, mas você precisa lembrar disso antes de cada colagem, e escolher as colunas certas: se os valores em reais forem para Texto por engano, eles param de somar.</p>
+
+  <h3>Ao importar: defina o tipo da coluna</h3>
+  <p>Se os dados vêm de um arquivo CSV ou de <span class="menu">Dados › Da Web</span>, abra <span class="menu">Transformar Dados</span> e defina as colunas de código como <strong>Texto</strong> antes de carregar. No Assistente de Importação de Texto, a mesma escolha fica na última etapa, em <span class="menu">Formato de dados da coluna › Texto</span>.</p>
+
+  <h3>Desligue a conversão (Microsoft 365)</h3>
+  <p>As versões recentes do Excel (Microsoft 365 e Excel 2024) permitem desligar esse comportamento: em <span class="menu">Arquivo › Opções › Dados › Conversão Automática de Dados</span>, desmarque a opção que remove os zeros à esquerda e converte em número, e também a que guarda só os primeiros 15 dígitos. No Mac: <span class="menu">Excel › Preferências › Editar</span>. Vale para tudo o que você digita e cola, então os códigos ficam como estão; os números que são números de verdade continuam sendo reconhecidos.</p>
+
+  <h3>Já perdeu os zeros? Refaça com TEXTO</h3>
+  <p>Se a coluna tem sempre o mesmo tamanho (um CEP de 8 dígitos), dá para devolver os zeros com uma fórmula: <code>=TEXTO(A2;"00000000")</code>, com tantos zeros quanto o tamanho, ou <code>=TEXTO(A2;"00000-000")</code> para o CEP já sair com o hífen. Ou use o formato de número personalizado <code>00000000</code>, que mostra os zeros enquanto o valor continua número. Não resolve os dígitos perdidos depois do 15º: esses já eram.</p>
+
+  <div class="riquadro attenzione">
+    <p><strong>Não corrija com apóstrofo na mão.</strong> Digitar <code>'01310100</code> funciona para uma célula, não para 3.000 linhas. E não ajuda em uma lista que você exporta de novo toda semana.</p>
+  </div>
+
+  <h2>Ou deixe a exportação cuidar disso</h2>
+  <p>O <a href="../">Botão Exportar</a> reconhece os códigos antes de gravar o arquivo: valores com zero à esquerda e sequências longas de dígitos (telefones, CPF, CNPJ, números de pedido) são gravados como texto, exatamente como na página. Nas colunas chamadas CEP, Código, Pedido, NF, Nº e parecidas, os números são gravados sem separador de milhar, então 10045 não vira 10.045. Os valores e as quantidades ao lado continuam números de verdade, que dá para somar. Nada para configurar, coluna por coluna.</p>
+
+  <section class="cta-guida">
+    <h2>Exporte sem perder nenhum zero</h2>
+    <p>Grátis para uma tabela por vez, sem cadastro, e nada sai do seu navegador.</p>
+    <div class="azioni">
+      <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=pt&amp;utm_campaign=excel-zero-a-esquerda">Adicionar ao Chrome — é grátis</a>
+      <a class="btn btn-secondario" href="../../prova.html?hl=pt-BR">Experimentar em uma tabela de exemplo</a>
+    </div>
+  </section>
+
+  <nav class="correlate" aria-label="Guias relacionados">
+    <h2>Guias relacionados</h2>
+    <a href="exportar-tabela-de-site-para-excel.html">Como exportar uma tabela de um site para o Excel</a>
+    <a href="numeros-como-texto-no-excel.html">Números colados de um site viram texto no Excel</a>
+  </nav>
+</main>
+
+<footer class="piede">
+  <div class="contenitore">
+    <span>Botão Exportar</span>
+    <a href="../../privacy-policy.html">Política de privacidade</a>
+    <a href="https://talvok.github.io/">Talvok</a>
+  </div>
+</footer>
+</body>
+</html>

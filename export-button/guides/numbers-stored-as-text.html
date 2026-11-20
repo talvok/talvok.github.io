@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Numbers pasted from a website become text in Excel: how to fix them — Export Button</title>
+<meta name="description" content="SUM returns 0, numbers sit on the left with a green triangle, or 1,234 becomes 1.234. Why numbers copied from a web page turn into text in Excel, and four ways to fix them.">
+<link rel="canonical" href="https://talvok.github.io/export-button/guides/numbers-stored-as-text.html">
+<link rel="alternate" hreflang="en" href="https://talvok.github.io/export-button/guides/numbers-stored-as-text.html">
+<link rel="alternate" hreflang="pt-BR" href="https://talvok.github.io/export-button/pt/guias/numeros-como-texto-no-excel.html">
+<link rel="alternate" hreflang="es" href="https://talvok.github.io/export-button/es/guias/numeros-como-texto-en-excel.html">
+<link rel="alternate" hreflang="it" href="https://talvok.github.io/export-button/it/guide/numeri-come-testo-in-excel.html">
+<link rel="icon" href="../icona.png">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body>
+
+<header class="testata">
+  <div class="contenitore">
+    <a class="marca" href="../"><img src="../icona.png" alt=""><span>Export Button</span></a>
+    <nav class="lingue" aria-label="Language">
+      <a href="numbers-stored-as-text.html" hreflang="en" aria-current="page">EN</a>
+      <a href="../pt/guias/numeros-como-texto-no-excel.html" hreflang="pt-BR">PT</a>
+      <a href="../es/guias/numeros-como-texto-en-excel.html" hreflang="es">ES</a>
+      <a href="../it/guide/numeri-come-testo-in-excel.html" hreflang="it">IT</a>
+    </nav>
+    <a class="btn-testata" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=en&amp;utm_campaign=numbers-stored-as-text">Add to Chrome</a>
+  </div>
+</header>
+
+<main class="articolo">
+  <p class="briciole"><a href="../">Export Button</a> › <a href="../#guides">Guides</a></p>
+  <h1>Numbers pasted from a website become text in Excel</h1>
+  <p class="sotto">The table looked fine on the page. In Excel the amounts sit on the left, there's a small green triangle in the corner, and <code>SUM</code> returns 0. Or worse: 1,234 has become 1.234. Here's why, and how to fix it.</p>
+
+  <h2>Three different problems</h2>
+  <table class="esempio">
+    <tr><th>On the page</th><th>In Excel</th><th>What happened</th></tr>
+    <tr><td>$1,250.00</td><td class="sbagliato">'$1,250.00 (text)</td><td>The currency symbol or a stray space stopped Excel from reading a number</td></tr>
+    <tr><td>1.250,00</td><td class="sbagliato">1.25 or text</td><td>The site uses a comma for decimals, your Excel uses a dot (or the other way round)</td></tr>
+    <tr><td>10/12/2026</td><td class="sbagliato">10 December</td><td>The site writes month/day, your Excel reads day/month</td></tr>
+  </table>
+  <p>The first one is easy to spot. The second and third are dangerous, because Excel doesn't complain: it shows a number, just the wrong one.</p>
+
+  <h2>Fix 1: Convert to Number</h2>
+  <p>If the cells show a green triangle, select the whole column, click the warning icon that appears next to the selection and choose <span class="menu">Convert to Number</span>. It works when the text is a clean number in your own format. It doesn't help when there's a currency symbol in the way or the separators are the other way round.</p>
+
+  <h2>Fix 2: Text to Columns, with the right separators</h2>
+  <p>This is the most reliable fix for amounts written in another country's format.</p>
+  <ol>
+    <li>Select the column.</li>
+    <li><span class="menu">Data › Text to Columns</span> › <span class="menu">Delimited</span> › Next, untick every delimiter › Next.</li>
+    <li>Click <span class="menu">Advanced…</span> and set the <strong>Decimal separator</strong> and <strong>Thousands separator</strong> the way the <em>website</em> writes them (for 1.250,00: decimal “,” and thousands “.”).</li>
+    <li>Leave the column format on General and click <span class="menu">Finish</span>.</li>
+  </ol>
+  <p>In the same last step you can fix dates too: choose <span class="menu">Date</span> and the order the site uses (MDY or DMY).</p>
+
+  <h2>Fix 3: the NUMBERVALUE formula</h2>
+  <p>When you'd rather not touch the original column, add a new one with:</p>
+  <p><code>=NUMBERVALUE(A2, ",", ".")</code></p>
+  <p>The second argument is the decimal separator used in the text, the third is the thousands separator. Remove currency symbols first, for example <code>=NUMBERVALUE(SUBSTITUTE(A2,"€",""), ",", ".")</code>. Then copy the column and paste it back as values.</p>
+
+  <h2>Fix 4: Find and Replace</h2>
+  <p>For a currency symbol or a non-breaking space that sticks to every value, <span class="menu">Home › Find &amp; Select › Replace</span> (<kbd>Ctrl</kbd>+<kbd>H</kbd>), replace the symbol with nothing, then use Fix 1. Careful with dots and commas: replacing them by hand on a column of mixed values is how 1.5 becomes 15.</p>
+
+  <div class="riquadro attenzione">
+    <p><strong>Check before you trust a total.</strong> After any fix, compare two or three values with the page, including one with decimals and one above a thousand. An amount that's off by a factor of a thousand looks perfectly normal in a column.</p>
+  </div>
+
+  <h2>Or export it already right</h2>
+  <p><a href="../">Export Button</a> reads the table in your browser and writes real numbers before the file reaches you. It works out the decimal separator from the whole column, not cell by cell: in a column of “$162,700”, “$86,000” and “$1,250.50” the comma is the thousands separator, and in a column of “1.250,00” and “0,586” it's the decimal one. Currency symbols (€, $, £, R$, zł, ₺…) are removed, dates are read in the order the column uses, and codes with leading zeros stay text.</p>
+
+  <section class="cta-guida">
+    <h2>Numbers that add up, from the first click</h2>
+    <p>Free for one table at a time, no account, and nothing leaves your browser.</p>
+    <div class="azioni">
+      <a class="btn btn-primario" href="https://chromewebstore.google.com/detail/heiihlboddffjcbfmcfokgilkoecloph?utm_source=guide&amp;utm_medium=en&amp;utm_campaign=numbers-stored-as-text">Add to Chrome — it's free</a>
+      <a class="btn btn-secondario" href="../prova.html?hl=en">Try it on a sample table</a>
+    </div>
+  </section>
+
+  <nav class="correlate" aria-label="Related guides">
+    <h2>Related guides</h2>
+    <a href="export-website-table-to-excel.html">How to export a table from a website to Excel</a>
+    <a href="excel-leading-zeros.html">Why Excel removes leading zeros, and how to keep them</a>
+  </nav>
+</main>
+
+<footer class="piede">
+  <div class="contenitore">
+    <span>Export Button</span>
+    <a href="../privacy-policy.html">Privacy policy</a>
+    <a href="https://talvok.github.io/">Talvok</a>
+  </div>
+</footer>
+</body>
+</html>
